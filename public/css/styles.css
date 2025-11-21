@@ -1,0 +1,47 @@
+#Login {
+    background: linear-gradient(120deg, #4c79d3 40%, #ffffff 40.9%) no-repeat fixed;
+}
+
+#text-login{
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.button-login{
+    border-radius: 10px;
+    background-color: #4e0070;
+    color: white;
+    width: 50%;
+    margin: 0 25%;
+}
+
+.button-login:hover{
+    background-color: #4c79d3;
+    color: white;
+}
+
+.link-default{
+    color: #4e0070;
+    cursor: pointer;
+}
+
+.link-default:hover{
+    color: #4c79d3;
+}
+
+
+.form-text{
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+
+.container-img{
+    text-align: center;
+}
+
+
+
+
