@@ -93,9 +93,8 @@ header {
 
 
 .button-login:hover{
-    border: 2px solid #4c79d3;
     background-color: #4c79d3;
-    color:#4c79d3
+    color: white;   
 }
 
 .link-default{
