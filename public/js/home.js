@@ -8,10 +8,11 @@ let data = {
     transactions: []
 };
 
+// BOTÃO SAIR
 document.getElementById("button-logout").addEventListener("click", logout);
 
 
-//ADICIONAR LANÇAMENTO
+// ADICIONAR LANÇAMENTO
 document.getElementById("transaction-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -25,23 +26,33 @@ document.getElementById("transaction-form").addEventListener("submit", function 
         type: type,
         description: description,
         date: date,
-    }
-    )
+    });
+
+    saveData(data);  // salva no localStorage
+    e.target.reset(); // limpar formulário
+    myModal.hide(); // fechar modal
+
+    alert("Lançamento adicionado com sucesso!");
 });
 
+
+// VERIFICAR LOGIN
 checkLogged();
 
 function checkLogged() {
+    // Se existe uma sessão salva no localStorage, move para sessionStorage
     if (session) {
         sessionStorage.setItem("logged", session);
         logged = session;
     }
 
+    // Se não está logado, vai para página inicial
     if (!logged) {
         window.location.href = "index.html";
         return;
     }
 
+    // Carregar dados do usuário
     const dataUser = localStorage.getItem(logged);
     if (dataUser) {
         data = JSON.parse(dataUser);
@@ -50,8 +61,17 @@ function checkLogged() {
     console.log(data);
 }
 
+
+// FUNÇÃO SAIR
 function logout() {
     sessionStorage.removeItem("logged");
     localStorage.removeItem("session");
     window.location.href = "index.html";
+}
+
+
+// SALVAR DADOS DO USUÁRIO
+function saveData(data) {
+    // Usa o email/login do usuário como chave
+    localStorage.setItem(logged, JSON.stringify(data));
 }

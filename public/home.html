@@ -7,7 +7,6 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
 
@@ -34,9 +33,6 @@
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -45,7 +41,6 @@
             class="collapse navbar-collapse justify-content-end"
             id="navbarSupportedContent"
           >
-            <!-- /Icones -->
             <div class="d-flex menu">
               <a href="home.html">
                 <button class="btn" type="button">
@@ -65,15 +60,15 @@
                   type="button"
                   id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
                 >
                   <i class="bi bi-person-circle fs-4"></i>
                 </button>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><button class="dropdown-item" id="button-logout">Sair</button></li>
+                  <li>
+                    <button class="dropdown-item" id="button-logout">Sair</button>
+                  </li>
                 </ul>
-                <!-- Fechamento Icones -->
               </div>
             </div>
           </div>
@@ -90,9 +85,7 @@
           </div>
 
           <div class="col d-flex mt-4 justify-content-end">
-            <div class="text-center">
-              <img src="./assets/images/coins-small.png" alt="image coins" />
-            </div>
+            <img src="./assets/images/coins-small.png" alt="image coins" />
           </div>
 
           <div class="row">
@@ -102,20 +95,18 @@
                   <div class="col-6">
                     <span class="fs-4">
                       Entradas
-                      <i class="bi bi-arrow-down-circle fs-2 p-2 align-middle"></i
-                    ></span>
+                      <i class="bi bi-arrow-down-circle fs-2 p-2 align-middle"></i>
+                    </span>
                   </div>
                   <div class="col-6">
                     <span class="fs-4">
-                      Saídas<i
-                        class="bi bi-arrow-up-circle fs-2 p-2 align-middle"
-                      ></i
-                    ></span>
+                      Saídas
+                      <i class="bi bi-arrow-up-circle fs-2 p-2 align-middle"></i>
+                    </span>
                   </div>
 
-                  <div class="col-12 mt-12">
-                    <hr />
-                  </div>
+                  <div class="col-12 mt-12"><hr /></div>
+
                   <div class="row">
                     <div class="col-6">
                       <div class="container">
@@ -129,6 +120,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="col-6">
                       <div class="container">
                         <div class="row">
@@ -136,29 +128,35 @@
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <button class="bi bi-plus btn button-float"  data-bs-toggle="modal"
-                        data-bs-target="#transaction-modal"></button>
-      </div>
-      
 
-         <!-- Modal -->
+        </div>
+
+        <!-- BOTÃO FLUTUANTE -->
+        <button
+          class="bi bi-plus btn button-float"
+          data-bs-toggle="modal"
+          data-bs-target="#transaction-modal"
+        ></button>
+      </div>
+
+      <!-- Modal -->
       <div
         class="modal fade"
         id="transaction-modal"
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
+
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Adicionar Lançamento</h5>
+              <h5 class="modal-title">Adicionar Lançamento</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -166,64 +164,39 @@
                 aria-label="Close"
               ></button>
             </div>
+
             <form id="transaction-form">
               <div class="modal-body">
+
                 <div class="mb-3">
-                  <label for="value-input" class="form-label"
-                    >Valor</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="value-input"
-                    aria-describedby="description-input"
-                  />
-                  
-                </div>
-                <div class="mb-3">
-                  <label for="description-input" class="form-label"
-                    >Descrição</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="description-input"
-                    required
-                  />
-                  
+                  <label for="value-input" class="form-label">Valor</label>
+                  <input type="number" class="form-control" id="value-input" />
                 </div>
 
                 <div class="mb-3">
-                  <label for="date-input" class="form-label"
-                    >Data</label
-                  >
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="date-input"
-                    required
-                  />
-                  
+                  <label for="description-input" class="form-label">Descrição</label>
+                  <input type="text" class="form-control" id="description-input" required />
                 </div>
 
-
-
-                <div class="mb-3 form-check">
-                  
+                <div class="mb-3">
+                  <label for="date-input" class="form-label">Data</label>
+                  <input type="date" class="form-control" id="date-input" required />
                 </div>
-              <div class="mb-3">
-                <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="type-input" id="type-input" value="1" checked> 
-  <label class="form-check-label" for="inlineRadio1">Entrada</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="type-input" id="type-input" value="2">
-  <label class="form-check-label" for="inlineRadio2">Saída</label>
-</div>
+
+                <div class="mb-3">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type-input" id="type-entrada" value="1" checked>
+                    <label class="form-check-label" for="type-entrada">Entrada</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type-input" id="type-saida" value="2">
+                    <label class="form-check-label" for="type-saida">Saída</label>
+                  </div>
+                </div>
 
               </div>
-              
-              </div>
+
               <div class="modal-footer">
                 <button
                   type="button"
@@ -232,25 +205,22 @@
                 >
                   Cancelar
                 </button>
-                <button   type="button" class="btn btn-primary button-default"  data-bs-toggle="modal"
-                        data-bs-target="#transaction-modal"> 
+
+                <!-- BOTÃO CORRIGIDO -->
+                <button type="submit" class="btn btn-primary button-default">
                   Adicionar
                 </button>
+
               </div>
             </form>
+
           </div>
         </div>
       </div>
-     
-      <!-- Modal fechamento -->
+
     </main>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/home.js"></script>
   </body>
 </html>
