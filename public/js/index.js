@@ -1,14 +1,13 @@
 // Criar instância do modal
 const myModal = new bootstrap.Modal(document.getElementById("register-modal"));
-let logged = sessionStorage.getItem("Logged");
+
+let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
 
 checkLogged();
 
-
-//LOGAR NO SISTEMA
-
-document.getElementById("login-form").addEventListener("submit", function(e){
+// LOGAR NO SISTEMA
+document.getElementById("login-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const email = document.getElementById("email-input").value;
@@ -17,33 +16,23 @@ document.getElementById("login-form").addEventListener("submit", function(e){
 
     const account = getAccount(email);
 
-    if(!account) { /*se não econtrou a conta*/
-        alert("Opps! Verifique o usúario ou a senha")
+    if (!account) {
+        alert("Opps! Verifique o usúario ou a senha");
         return;
     }
 
-    if (account){
-        
-        if(account.password !== password) {
-            alert("Opps! Verifique se o usuario ou a senha estão errados.")
-            return;
-        }
-
-        saveSession(email, checkSession);
-
-        window.location.href = "home.html"; /*Se econtrar vai para home*/ 
+    if (account.password !== password) {
+        alert("Opps! Verifique se o usuario ou a senha estão errados.");
+        return;
     }
 
+    saveSession(email, checkSession);
 
-    
-    
+    window.location.href = "home.html";
 });
 
-
-
-
 // CRIAR CONTA
-document.getElementById("register-form").addEventListener("submit", function(e) {
+document.getElementById("register-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const email = document.getElementById("email-create-input").value;
@@ -71,44 +60,41 @@ document.getElementById("register-form").addEventListener("submit", function(e) 
     });
 
     alert("Conta criada com sucesso!");
-
     myModal.hide();
 });
 
 
 function checkLogged() {
-    if(session) {
-        sessionStorage.setItem("looged", session);
+    // Se o usuário marcou "permanecer logado"
+    if (session) {
+        sessionStorage.setItem("logged", session);
         logged = session;
     }
 
-    if(logged){
-        saveSession(logged, session);
-
-        window.location.href = "home.html" /*se o usuario clicar em permancer logado ele já jogo para home*/ 
+    if (logged) {
+        window.location.href = "home.html";
     }
 }
 
-// Função para salvar conta no localStorage
 function saveAccount(data) {
     localStorage.setItem(data.login, JSON.stringify(data));
 }
 
-function saveSession(data, saveSession){
-    if (saveSession){
-        localStorage.setItem("session", data);
+// SALVA A SESSÃO CORRETAMENTE
+function saveSession(email, keepLogged) {
+
+    // se marcou permanecer logado → salva no localStorage
+    if (keepLogged) {
+        localStorage.setItem("session", email);
     }
 
-    sessionStorage.setItem("session", data);
+    // sempre salva a sessão atual
+    sessionStorage.setItem("logged", email);
 }
 
-
-function getAccount (key){
+function getAccount(key) {
     const account = localStorage.getItem(key);
-    if(account) {
-        return JSON.parse(account);
-    }
+    if (account) return JSON.parse(account);
 
     return "";
-
 }

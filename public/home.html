@@ -46,7 +46,7 @@
             id="navbarSupportedContent"
           >
             <!-- /Icones -->
-            <div class="d-flex">
+            <div class="d-flex menu">
               <a href="home.html">
                 <button class="btn" type="button">
                   <i class="bi bi-house-door-fill fs-4 color-secondary"></i>
@@ -71,7 +71,7 @@
                 </button>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Sair</a></li>
+                  <li><button class="dropdown-item" id="button-logout">Sair</button></li>
                 </ul>
                 <!-- Fechamento Icones -->
               </div>
@@ -188,6 +188,7 @@
                     type="text"
                     class="form-control"
                     id="description-input"
+                    required
                   />
                   
                 </div>
@@ -200,6 +201,7 @@
                     type="date"
                     class="form-control"
                     id="date-input"
+                    required
                   />
                   
                 </div>
@@ -248,5 +250,7 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+
+    <script src="./js/home.js"></script>
   </body>
 </html>
