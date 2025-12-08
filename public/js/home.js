@@ -11,7 +11,6 @@ let data = {
 // BOTÃO SAIR
 document.getElementById("button-logout").addEventListener("click", logout);
 
-
 // ADICIONAR LANÇAMENTO
 document.getElementById("transaction-form").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -30,11 +29,15 @@ document.getElementById("transaction-form").addEventListener("submit", function 
 
     saveData(data);  // salva no localStorage
     e.target.reset(); // limpar formulário
+
+    // 🔥 CORREÇÃO DO ERRO DE ARIA-HIDDEN
+    document.activeElement.blur();  // tira o foco do botão que abriu o modal
+    document.body.focus();          // força o foco para fora do modal
+
     myModal.hide(); // fechar modal
 
     alert("Lançamento adicionado com sucesso!");
 });
-
 
 // VERIFICAR LOGIN
 checkLogged();
@@ -58,9 +61,8 @@ function checkLogged() {
         data = JSON.parse(dataUser);
     }
 
-    console.log(data);
+    getCashIn();
 }
-
 
 // FUNÇÃO SAIR
 function logout() {
@@ -69,6 +71,27 @@ function logout() {
     window.location.href = "index.html";
 }
 
+function getCashIn() {
+    const transactions = data.transactions;
+
+    const cashIn = transactions.filter((item) => item.type === "1");
+
+    if (cashIn.length) {
+        let cashInHtml = ``;
+        let limit = 0;
+
+        if (cashIn.length > 5) {
+            limit = 5;
+        } else {
+            limit = cashIn.length;
+        }
+
+        for (let index = 0; index < limit; index++) {
+            console.log(index);
+            console.log(cashIn[index]);
+        }
+    }
+}
 
 // SALVAR DADOS DO USUÁRIO
 function saveData(data) {
